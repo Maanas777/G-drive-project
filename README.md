@@ -37,7 +37,10 @@ To test the API endpoints and interact with the functions, you can use [Postman]
 3.  Configure the environment variables or request parameters as needed for your use case.
 4.  Start testing the following endpoints:
 
-	 ### Downloading a Video
+	 ### Downloading and uploading Video
+
+This API endpoint serves a dual purpose, allowing you to both download and upload videos. Provide the id of the video you want to download, and include your authentication token in the request body. The endpoint will handle the download and initiate the upload to the specified directory.
+
  Endpoint: `/api/download/:id
   - Method: `POST`
   - - Description: Download a large video file from a specific Google Drive directory and Initiate the process to upload a downloaded video to another Google Drive directory using chunked uploading.
@@ -49,3 +52,40 @@ To test the API endpoints and interact with the functions, you can use [Postman]
     {
       "token": "your-auth-token"
     }
+
+    Find the `sourceFilePath` variable in the 'videoCOntroller' and assign the file path to your source video file. It should look something like this:
+
+    const sourceFilePath = '/path/to/your/source/video.mp4';
+
+
+## Additional Information
+
+### Obtaining Google API Credentials
+
+Before using this application, you need to obtain the `credentials.json` file from the Google Developer Console. Follow these steps to get your API credentials:
+
+1. Go to the [Google Developer Console](https://console.developers.google.com/).
+
+2. Create a new project if you don't already have one. Click on the project name at the top of the page, then click "New Project" and follow the prompts to create it.
+
+3. In the left sidebar, navigate to "APIs & Services" > "Credentials."
+
+4. Click on the "Create credentials" button and select "Service Account Key."
+
+5. Fill out the required information for your service account, including a name and role. You can choose the role based on the permissions your application needs.
+
+6. Choose "JSON" as the key type and click the "Create" button.
+
+7. The JSON file containing your credentials will be downloaded to your computer. This is your `credentials.json` file.
+
+8. Place the `credentials.json` file in the project directory of this application.
+
+Now, you have successfully obtained the `credentials.json` file required for authenticating your application with Google Drive.
+
+
+
+
+
+
+ 
+   
